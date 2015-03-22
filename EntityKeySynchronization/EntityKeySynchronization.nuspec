@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>EntyTea.EntityKeySynchronization</id>
+    <version>$version$</version>
+    <title>EntityKeySynchronization</title>
+    <authors>enty-tea</authors>
+    <owners>enty-tea</owners>
+    <projectUrl>https://github.com/enty-tea/EntityKeySynchronization</projectUrl>
+    <licenseUrl>https://github.com/enty-tea/EntityKeySynchronization/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A lightweight .NET library for keeping an entity and its key synchronized.</description>
+    <tags>entity key synchronization</tags>
+  </metadata>
+</package>
