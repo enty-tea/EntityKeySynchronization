@@ -1,4 +1,4 @@
-# Entity Key Synchronization
+# Entity Key Synchronization [![Build status](https://ci.appveyor.com/api/projects/status/w8xly9tppg3n1550?svg=true)](https://ci.appveyor.com/project/enty-tea/entitykeysynchronization)
 
 A lightweight .NET library for keeping an entity and its key synchronized.
 
