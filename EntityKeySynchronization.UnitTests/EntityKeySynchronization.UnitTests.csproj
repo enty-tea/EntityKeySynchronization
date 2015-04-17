@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SerializeUtils.cs" />
     <Compile Include="TestEntityIdSynchronizer.cs" />
     <Compile Include="TestEntityKeySynchronizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

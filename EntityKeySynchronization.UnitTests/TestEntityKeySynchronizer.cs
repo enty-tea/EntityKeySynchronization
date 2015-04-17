@@ -246,8 +246,24 @@ namespace EntyTea.EntityKeySynchronization.UnitTests
             Assert.AreEqual(string.Empty, s.Key);
         }
 
+        [Test]
+        public void SerializeThenDeserialize()
+        {
+            var s = new PersonNameSynchronizer();
+            var bob = new Person { Name = "Bob" };
+            s.Entity = bob;
+            s.Key = "Bob";
+
+            var clone = SerializeUtils.Clone(s);
+            Assert.AreNotSame(s, clone);
+            Assert.AreEqual("Bob", clone.Key);
+            Assert.AreEqual(bob.Name, clone.Entity.Name);
+            Assert.AreNotSame(bob, clone.Entity);
+        }
+
         #region Test Classes
 
+        [Serializable]
         private class PersonNameSynchronizer : EntityKeySynchronizerBase<Person, string>
         {
             protected override string GetKeyForEntity(Person entity)
@@ -282,7 +298,7 @@ namespace EntyTea.EntityKeySynchronization.UnitTests
             }
         }
 
-
+        [Serializable]
         private class Person
         {
             public string Name { get; set; }

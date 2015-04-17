@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -200,8 +201,25 @@ namespace EntyTea.EntityKeySynchronization.UnitTests
             Assert.AreEqual(-1, s.Key);
         }
 
+        [Test]
+        public void SerializeThenDeserialize()
+        {
+            var s = new PersonIdSynchronizer();
+            var bob = new Person { Id = 1, Name = "Bob" };
+            s.Id = 1;
+            s.Entity = bob;
+
+            var clone = SerializeUtils.Clone(s);
+            Assert.AreNotSame(s, clone);
+            Assert.AreEqual(1, clone.Id);
+            Assert.AreEqual(bob.Id, clone.Entity.Id);
+            Assert.AreEqual(bob.Name, clone.Entity.Name);
+            Assert.AreNotSame(bob, clone.Entity);
+        }
+
         #region Test Classes
 
+        [Serializable]
         private class PersonIdSynchronizer : EntityIdSynchronizerBase<Person, int>
         {
             protected override int GetKeyForEntity(Person entity)
@@ -210,6 +228,7 @@ namespace EntyTea.EntityKeySynchronization.UnitTests
             }
         }
 
+        [Serializable]
         private class ZeroValidPersonIdSynchronizer : EntityIdSynchronizerBase<Person, int>
         {
             protected override int GetKeyForEntity(Person entity)
@@ -226,6 +245,7 @@ namespace EntyTea.EntityKeySynchronization.UnitTests
             }
         }
 
+        [Serializable]
         private class Person
         {
             public int Id { get; set; }

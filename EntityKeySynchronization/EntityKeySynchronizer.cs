@@ -64,6 +64,7 @@ namespace EntyTea.EntityKeySynchronization
     /// </summary>
     /// <typeparam name="TEntity">the type of the entity</typeparam>
     /// <typeparam name="TKey">the type of the entity's key</typeparam>
+    [Serializable]
     public abstract class EntityKeySynchronizerBase<TEntity, TKey>
         where TEntity : class
     {
